@@ -22,7 +22,7 @@ export default function Login() {
       localStorage.setItem("user", JSON.stringify(res.data));
       message.success("登陆成功");
 
-      router.push("/book");
+      router.push("/item");
     } catch (error) {
       console.error(error);
     }

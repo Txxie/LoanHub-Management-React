@@ -1,5 +1,5 @@
 import { getCategoryList } from "@/api";
-import { bookAdd, bookUpdate } from "@/api/book";
+import { bookAdd, bookUpdate } from "@/api/item";
 import { BookFormType, BookType, CategoryType } from "@/types";
 import {
   Button,
@@ -68,7 +68,7 @@ const ItemForm: React.FC<BookFormType> = ({ title, editData }) => {
       await bookAdd(values);
       message.success("创建成功");
     }
-    router.push("/book");
+    router.push("/item");
   };
 
   const handlePreview = () => {

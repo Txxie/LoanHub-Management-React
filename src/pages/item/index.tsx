@@ -132,7 +132,7 @@ export default function Item() {
                 type="link"
                 block
                 onClick={() => {
-                  router.push(`/book/edit/${row._id}`);
+                  router.push(`/item/edit/${row._id}`);
                   // router.push(`/item/edit/${row._id}`);
                 }}
               >
@@ -184,7 +184,7 @@ export default function Item() {
   }, []);
 
   const handleBookAdd = () => {
-    router.push("/book/add");
+    router.push("/item/add");
   };
 
   const handleDeleteModal = (id: string) => {

@@ -29,19 +29,19 @@ const { Header, Sider, Content } = AntdLayout;
 const ITEMS = [
   {
     label: "物品管理",
-    key: "book",
+    key: "item",
     role: USER_ROLE.USER,
     icon: <SnippetsOutlined />,
     children: [
       {
         label: "物品列表",
-        key: "/book",
+        key: "/item",
         // key: "/item",
         role: USER_ROLE.USER,
       },
       {
         label: "物品添加",
-        key: "/book/add",
+        key: "/item/add",
         // key: "/item/add",
         role: USER_ROLE.ADMIN,
       },
