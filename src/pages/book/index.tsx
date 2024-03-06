@@ -38,7 +38,7 @@ const COLUMNS = [
     width: 200,
   },
   {
-    title: "封面",
+    title: "图片",
     dataIndex: "cover",
     key: "cover",
     ellipsis: true,
@@ -56,10 +56,17 @@ const COLUMNS = [
       />
     ),
   },
+  // {
+  //   title: "作者",
+  //   dataIndex: "author",
+  //   key: "author",
+  //   ellipsis: true,
+  //   width: 150,
+  // },
   {
-    title: "作者",
-    dataIndex: "author",
-    key: "author",
+    title: "编号",
+    dataIndex: "code",
+    key: "code",
     ellipsis: true,
     width: 150,
   },
@@ -73,7 +80,7 @@ const COLUMNS = [
       text ? <Tag color="blue">{text.name}</Tag> : "-",
   },
   {
-    title: "描述",
+    title: "说明",
     dataIndex: "description",
     key: "description",
     ellipsis: true,
@@ -98,7 +105,7 @@ const COLUMNS = [
   },
 ];
 
-export default function Book() {
+export default function Item() {
   const [form] = Form.useForm();
   const user = useCurrentUser();
   const [list, setList] = useState<BookType[]>([]);
@@ -106,7 +113,7 @@ export default function Book() {
   const [total, setTotal] = useState(0);
   const [pagination, setPagination] = useState<TablePaginationConfig>({
     current: 1,
-    pageSize: 20,
+    pageSize: 6,
     showSizeChanger: true,
   });
   const router = useRouter();
@@ -114,36 +121,37 @@ export default function Book() {
   const columns =
     user?.role === USER_ROLE.ADMIN
       ? [
-          ...COLUMNS,
-          {
-            title: "操作",
-            dataIndex: "",
-            key: "action",
-            render: (_: any, row: BookType) => (
-              <Space>
-                <Button
-                  type="link"
-                  block
-                  onClick={() => {
-                    router.push(`/book/edit/${row._id}`);
-                  }}
-                >
-                  编辑
-                </Button>
-                <Button
-                  type="link"
-                  danger
-                  block
-                  onClick={() => {
-                    handleDeleteModal(row._id as string);
-                  }}
-                >
-                  删除
-                </Button>
-              </Space>
-            ),
-          },
-        ]
+        ...COLUMNS,
+        {
+          title: "操作",
+          dataIndex: "",
+          key: "action",
+          render: (_: any, row: BookType) => (
+            <Space>
+              <Button
+                type="link"
+                block
+                onClick={() => {
+                  router.push(`/book/edit/${row._id}`);
+                  // router.push(`/item/edit/${row._id}`);
+                }}
+              >
+                编辑
+              </Button>
+              <Button
+                type="link"
+                danger
+                block
+                onClick={() => {
+                  handleDeleteModal(row._id as string);
+                }}
+              >
+                删除
+              </Button>
+            </Space>
+          ),
+        },
+      ]
       : COLUMNS;
 
   const fetchData = useCallback(
@@ -207,7 +215,7 @@ export default function Book() {
 
   return (
     <Content
-      title="图书列表"
+      title="物品列表"
       operation={
         <AuthHoc>
           <Button type="primary" onClick={handleBookAdd}>
@@ -232,9 +240,21 @@ export default function Book() {
             <Form.Item name="author" label="作者">
               <Input placeholder="请输入" />
             </Form.Item>
+            {/* <Form.Item name="code" label="编号">
+              <Input placeholder="请输入" />
+            </Form.Item> */}
           </Col>
           <Col span={5}>
             <Form.Item name="category" label="分类">
+              {/* <Select placeholder="请输入" allowClear
+                options={[
+                  { value: 'Electronics', label: '电子设备' },
+                  { value: 'Office Supplies', label: '办公用品' },
+                  { value: 'Clothing', label: '服装' },
+                  { value: 'Stationery', label: '文具' },
+                  { value: 'Household Goods', label: '生活用品' },
+                  { value: 'others', label: '其他' },
+                ]} /> */}
               <Select placeholder="请选择" allowClear>
                 {categoryList.map((category) => (
                   <Option key={category._id} value={category._id}>

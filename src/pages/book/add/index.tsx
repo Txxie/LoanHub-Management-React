@@ -1,5 +1,5 @@
-import { BookForm } from "@/components";
+import { ItemForm } from "@/components";
 
-export default function Book() {
-  return <BookForm title="图书添加" />;
+export default function Item() {
+  return <ItemForm title="物品添加" />;
 }
