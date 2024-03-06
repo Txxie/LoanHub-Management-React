@@ -65,7 +65,7 @@ const COLUMNS = [
   },
 ];
 
-export default function Book() {
+export default function Item() {
   const [form] = Form.useForm();
   const user = useCurrentUser();
   const [list, setList] = useState<UserType[]>([]);

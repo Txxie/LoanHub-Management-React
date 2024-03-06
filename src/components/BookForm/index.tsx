@@ -22,7 +22,7 @@ import styles from "./index.module.css";
 const Option = Select.Option;
 const { TextArea } = Input;
 
-const BookForm: React.FC<BookFormType> = ({ title, editData }) => {
+const ItemForm: React.FC<BookFormType> = ({ title, editData }) => {
   const router = useRouter();
   const [form] = Form.useForm();
   const [categoryList, setCategoryList] = useState<CategoryType[]>([]);
@@ -187,4 +187,4 @@ const BookForm: React.FC<BookFormType> = ({ title, editData }) => {
   );
 };
 
-export default BookForm;
+export default ItemForm;

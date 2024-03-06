@@ -72,7 +72,7 @@ const COLUMNS = [
   },
 ];
 
-export default function Book() {
+export default function Item() {
   const [form] = Form.useForm();
   const [isModalOpen, setModalOpen] = useState(false);
   const [list, setList] = useState<CategoryType[]>([]);
