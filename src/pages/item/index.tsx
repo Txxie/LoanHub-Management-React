@@ -31,7 +31,7 @@ const Option = Select.Option;
 
 const COLUMNS = [
   {
-    title: "名称",
+    title: "物品名称",
     dataIndex: "name",
     key: "name",
     ellipsis: true,
@@ -57,7 +57,7 @@ const COLUMNS = [
     ),
   },
   // {
-  //   title: "编码",
+  //   title: "作者",
   //   dataIndex: "author",
   //   key: "author",
   //   ellipsis: true,

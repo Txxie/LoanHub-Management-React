@@ -59,9 +59,9 @@ export default function Login() {
             <Form.Item
               name="name"
               label={<span className={styles.label}>账号</span>}
-              rules={[{ required: true, message: "请输入用户名" }]}
+              rules={[{ required: true, message: "请输入用户名/学号" }]}
             >
-              <Input placeholder="请输入用户名" />
+              <Input placeholder="请输入用户名/学号" />
             </Form.Item>
             <Form.Item
               name="password"
