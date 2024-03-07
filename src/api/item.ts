@@ -9,21 +9,21 @@ export const getItemList = (
         all?: boolean;
     }
 ) => {
-    return request.get(`/api/books?${qs.stringify(params)}`);
+    return request.get(`/api/items?${qs.stringify(params)}`);
 };
 
-export const bookUpdate = (id: string, params: ItemType) => {
-    return request.put(`/api/books/${id}`, params);
+export const itemUpdate = (id: string, params: ItemType) => {
+    return request.put(`/api/items/${id}`, params);
 };
 
-export const bookAdd = (params: ItemType) => {
-    return request.post("/api/books", params);
+export const itemAdd = (params: ItemType) => {
+    return request.post("/api/items", params);
 };
 
 export const getItemDetail = (id: string) => {
-    return request.get(`/api/books/${id}`);
+    return request.get(`/api/items/${id}`);
 };
 
-export const bookDelete = (id: string) => {
-    return request.delete(`/api/books/${id}`);
+export const itemDelete = (id: string) => {
+    return request.delete(`/api/items/${id}`);
 };
