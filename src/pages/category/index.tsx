@@ -233,7 +233,7 @@ export default function Item() {
         >
           <Row gutter={24}>
             <Col span={5}>
-              <Form.Item name="name" label="名称">
+              <Form.Item name="name" label="物品名称">
                 <Input placeholder="请输入" allowClear />
               </Form.Item>
             </Col>

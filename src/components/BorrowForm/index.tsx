@@ -65,7 +65,7 @@ const BorrowForm: React.FC<any> = ({ title, editData }) => {
           rules={[
             {
               required: true,
-              message: "请输入名称",
+              message: "请输入物品名称",
             },
           ]}
         >
@@ -87,7 +87,7 @@ const BorrowForm: React.FC<any> = ({ title, editData }) => {
           rules={[
             {
               required: true,
-              message: "请输入名称",
+              message: "请输入物品名称",
             },
           ]}
         >
@@ -106,7 +106,7 @@ const BorrowForm: React.FC<any> = ({ title, editData }) => {
           rules={[
             {
               required: true,
-              message: "请输入名称",
+              message: "请输入物品名称",
             },
           ]}
         >

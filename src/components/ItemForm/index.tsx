@@ -97,12 +97,12 @@ const ItemForm: React.FC<ItemFormType> = ({ title, editData }) => {
           autoComplete="off"
         >
           <Form.Item
-            label="名称"
+            label="物品名称"
             name="name"
             rules={[
               {
                 required: true,
-                message: "请输入名称",
+                message: "请输入物品名称",
               },
             ]}
           >
@@ -126,7 +126,7 @@ const ItemForm: React.FC<ItemFormType> = ({ title, editData }) => {
             rules={[
               {
                 required: true,
-                message: "请选择图书分类",
+                message: "请选择物品分类",
               },
             ]}
           >
