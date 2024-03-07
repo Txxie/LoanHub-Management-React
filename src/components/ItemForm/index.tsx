@@ -168,7 +168,7 @@ const ItemForm: React.FC<ItemFormType> = ({ title, editData }) => {
           <Form.Item label="库存" name="stock">
             <InputNumber />
           </Form.Item>
-          <Form.Item label="描述" name="description">
+          <Form.Item label="租借说明" name="description">
             <TextArea className={styles.textarea} />
           </Form.Item>
           <Form.Item label=" " colon={false}>
