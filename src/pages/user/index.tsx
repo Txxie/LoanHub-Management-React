@@ -74,7 +74,7 @@ export default function Item() {
   const [total, setTotal] = useState(0);
   const [pagination, setPagination] = useState<TablePaginationConfig>({
     current: 1,
-    pageSize: 20,
+    pageSize: 6,
     showSizeChanger: true,
   });
   const [editData, setEditData] = useState<Partial<ItemType>>({});
@@ -192,8 +192,8 @@ export default function Item() {
         >
           <Row gutter={24}>
             <Col span={5}>
-              <Form.Item name="name" label="物品名称">
-                <Input placeholder="请输入" allowClear />
+              <Form.Item name="name" label="名称">
+                <Input placeholder="请输入用户名/学号" allowClear />
               </Form.Item>
             </Col>
             <Col span={5}>
