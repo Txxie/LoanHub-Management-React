@@ -159,7 +159,7 @@ const Layout: React.FC<
               alt="logo"
               className={styles.logo}
             />
-            校园物品管理系统
+            校园物品租借管理系统
             <span className={styles.user}>
               <Dropdown menu={{ items: USER_ITEMS }} placement="bottom">
                 <span onClick={(e) => e.preventDefault()}>
