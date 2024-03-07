@@ -102,7 +102,7 @@ const BorrowForm: React.FC<any> = ({ title, editData }) => {
           />
         </Form.Item>
         <Form.Item
-          label="书籍库存"
+          label="物品库存"
           rules={[
             {
               required: true,

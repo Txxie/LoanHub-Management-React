@@ -216,7 +216,7 @@ export default function Borrow() {
   };
 
   return (
-    <Content title="书籍借阅">
+    <Content title="物品借阅">
       <Form
         form={form}
         name="search"
@@ -225,7 +225,7 @@ export default function Borrow() {
       >
         <Row gutter={24}>
           <Col span={5}>
-            <Form.Item name="item" label="书籍名称">
+            <Form.Item name="item" label="物品名称">
               <Select
                 showSearch
                 placeholder="请选择"
