@@ -144,19 +144,19 @@ export default function Borrow() {
 
   const fetchData = useCallback(
     (search?: BorrowQueryType) => {
-      const { book, user, code, status } = search || {};
+      const { item, user, code, status } = search || {};
       getBorrowList({
         current: pagination.current as number,
         pageSize: pagination.pageSize as number,
-        book,
+        item,
         code,
         user,
         status,
       }).then((res) => {
         const data = res.data.map((item: BorrowType) => ({
           ...item,
-          bookName: item.book.name,
-          code: item.book.code,
+          bookName: item.item.name,
+          code: item.item.code,
           borrowUser: item.user.nickName,
         }));
         setList(data);
@@ -225,7 +225,7 @@ export default function Borrow() {
       >
         <Row gutter={24}>
           <Col span={5}>
-            <Form.Item name="book" label="书籍名称">
+            <Form.Item name="item" label="书籍名称">
               <Select
                 showSearch
                 placeholder="请选择"

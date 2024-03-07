@@ -1,12 +1,12 @@
 import { BORROW_STATUS } from "@/constants";
 
-import { BookType } from "./item";
+import { ItemType } from "./item";
 import { UserType } from "./user";
 
 export interface BorrowQueryType {
   current: number;
   pageSize: number;
-  book?: string;
+  item?: string;
   user?: string;
   code?: string;
   status?: BORROW_STATUS;
@@ -20,7 +20,7 @@ export interface BorrowOptionType {
 
 export interface BorrowType {
   _id?: string;
-  book: BookType;
+  item: ItemType;
   user: UserType;
   status: BORROW_STATUS;
 }

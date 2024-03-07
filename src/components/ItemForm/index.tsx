@@ -87,7 +87,7 @@ const ItemForm: React.FC<BookFormType> = ({ title, editData }) => {
     <>
       <Content title={title}>
         <Form
-          name="book"
+          name="item"
           form={form}
           labelCol={{ span: 3 }}
           wrapperCol={{ span: 18 }}

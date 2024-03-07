@@ -60,8 +60,8 @@ const BorrowForm: React.FC<any> = ({ title, editData }) => {
         autoComplete="off"
       >
         <Form.Item
-          label="书籍名称"
-          name="book"
+          label="物品名称"
+          name="item"
           rules={[
             {
               required: true,

@@ -49,7 +49,7 @@ const UserForm: React.FC<UserFormProps> = ({
     <>
       <Content title={title}>
         <Form
-          name="book"
+          name="item"
           form={form}
           labelCol={{ span: 3 }}
           wrapperCol={{ span: 18 }}
