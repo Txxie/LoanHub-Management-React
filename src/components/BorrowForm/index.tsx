@@ -1,6 +1,6 @@
 import { borrowAdd, borrowUpdate, getItemList, getUserList } from "@/api";
 import { ItemType, BorrowOptionType, BorrowType, UserType } from "@/types";
-import { Button, Form, Select, message } from "antd";
+import { Button, Form, Select, message, Input } from "antd";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -87,11 +87,12 @@ const BorrowForm: React.FC<any> = ({ title, editData }) => {
           rules={[
             {
               required: true,
-              message: "请输入物品名称",
+              message: "请输入名称或学号",
             },
           ]}
         >
-          <Select
+          <Input placeholder="请输入学号" allowClear />
+          {/* <Select
             placeholder="请选择"
             showSearch
             optionFilterProp="label"
@@ -99,7 +100,7 @@ const BorrowForm: React.FC<any> = ({ title, editData }) => {
               label: item.name,
               value: item._id,
             }))}
-          />
+          /> */}
         </Form.Item>
         <Form.Item
           label="物品库存"
