@@ -54,8 +54,8 @@ const COLUMNS = [
   },
   {
     title: "书籍作者",
-    dataIndex: "author",
-    key: "author",
+    dataIndex: "code",
+    key: "code",
     ellipsis: true,
     width: 150,
   },
@@ -144,19 +144,19 @@ export default function Borrow() {
 
   const fetchData = useCallback(
     (search?: BorrowQueryType) => {
-      const { book, user, author, status } = search || {};
+      const { book, user, code, status } = search || {};
       getBorrowList({
         current: pagination.current as number,
         pageSize: pagination.pageSize as number,
         book,
-        author,
+        code,
         user,
         status,
       }).then((res) => {
         const data = res.data.map((item: BorrowType) => ({
           ...item,
           bookName: item.book.name,
-          author: item.book.author,
+          code: item.book.code,
           borrowUser: item.user.nickName,
         }));
         setList(data);

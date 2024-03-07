@@ -1,7 +1,7 @@
 export interface BookType {
   _id?: string; // mongo数据库的id
   name: string;
-  author: string;
+  code: string;
   description: string;
   createdAt: string;
   publishAt: number; // 出版日期
@@ -14,7 +14,7 @@ export interface BookType {
 export interface BookQueryType {
   name: string;
   category: string;
-  author: string;
+  code: string;
 }
 
 export interface BookFormType {

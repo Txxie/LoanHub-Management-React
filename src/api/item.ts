@@ -3,7 +3,7 @@ import request from "@/utils/request";
 import qs from "qs";
 
 export const getBookList = (
-    params: Partial<Pick<BookType, "name" | "category" | "author">> & {
+    params: Partial<Pick<BookType, "name" | "category" | "code">> & {
         current?: number;
         pageSize?: number;
         all?: boolean;

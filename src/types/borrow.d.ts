@@ -8,7 +8,7 @@ export interface BorrowQueryType {
   pageSize: number;
   book?: string;
   user?: string;
-  author?: string;
+  code?: string;
   status?: BORROW_STATUS;
 }
 

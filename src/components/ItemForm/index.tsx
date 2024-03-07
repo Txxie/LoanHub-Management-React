@@ -110,7 +110,7 @@ const ItemForm: React.FC<BookFormType> = ({ title, editData }) => {
           </Form.Item>
           <Form.Item
             label="作者"
-            name="author"
+            name="code"
             rules={[
               {
                 required: true,

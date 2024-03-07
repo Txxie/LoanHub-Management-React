@@ -156,13 +156,13 @@ export default function Item() {
 
   const fetchData = useCallback(
     (search?: BookQueryType) => {
-      const { name, category, author } = search || {};
+      const { name, category, code } = search || {};
       getBookList({
         current: pagination.current as number,
         pageSize: pagination.pageSize as number,
         name,
         category,
-        author,
+        code,
       }).then((res) => {
         setList(res.data);
         setTotal(res.total);
@@ -237,7 +237,7 @@ export default function Item() {
             </Form.Item>
           </Col>
           <Col span={5}>
-            <Form.Item name="author" label="作者">
+            <Form.Item name="code" label="作者">
               <Input placeholder="请输入" />
             </Form.Item>
             {/* <Form.Item name="code" label="编号">
