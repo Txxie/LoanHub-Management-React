@@ -91,7 +91,7 @@ export default function Borrow() {
   const [total, setTotal] = useState(0);
   const [pagination, setPagination] = useState<TablePaginationConfig>({
     current: 1,
-    pageSize: 20,
+    pageSize: 6,
     showSizeChanger: true,
   });
   const router = useRouter();
