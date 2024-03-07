@@ -3,7 +3,7 @@ import { BorrowForm } from "@/components";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-const BorrowBook: React.FC<any> = () => {
+const BorrowItem: React.FC<any> = () => {
   const router = useRouter();
   const [data, setData] = useState();
 
@@ -16,4 +16,4 @@ const BorrowBook: React.FC<any> = () => {
   return <BorrowForm title="借阅编辑" editData={data} />;
 };
 
-export default BorrowBook;
+export default BorrowItem;

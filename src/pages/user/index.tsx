@@ -1,7 +1,7 @@
 import { getUserList, userDelete, userUpdate } from "@/api";
 import { Content } from "@/components";
 import { USER_STATUS } from "@/constants";
-import { BookType, CategoryType, UserQueryType, UserType } from "@/types";
+import { ItemType, CategoryType, UserQueryType, UserType } from "@/types";
 import { useCurrentUser } from "@/utils/hoos";
 import { ExclamationCircleFilled } from "@ant-design/icons";
 import {
@@ -77,7 +77,7 @@ export default function Item() {
     pageSize: 20,
     showSizeChanger: true,
   });
-  const [editData, setEditData] = useState<Partial<BookType>>({});
+  const [editData, setEditData] = useState<Partial<ItemType>>({});
   const router = useRouter();
 
   const columns = [

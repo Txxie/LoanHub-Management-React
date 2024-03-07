@@ -1,13 +1,13 @@
 import {
   borrowBack,
   borrowDelete,
-  getBookList,
+  getItemList,
   getBorrowList,
   getCategoryList,
 } from "@/api";
 import { AuthHoc, Content, Layout } from "@/components";
 import { BORROW_STATUS } from "@/constants";
-import { BookType, BorrowQueryType, BorrowType, CategoryType } from "@/types";
+import { ItemType, BorrowQueryType, BorrowType, CategoryType } from "@/types";
 import { useCurrentUser } from "@/utils/hoos";
 import { ExclamationCircleFilled } from "@ant-design/icons";
 import {
@@ -33,9 +33,9 @@ const Option = Select.Option;
 
 const COLUMNS = [
   {
-    title: "书籍名称",
-    dataIndex: "bookName",
-    key: "bookName",
+    title: "物品名称",
+    dataIndex: "itemName",
+    key: "itemName",
     ellipsis: true,
     width: 300,
   },
@@ -53,21 +53,21 @@ const COLUMNS = [
       ),
   },
   {
-    title: "书籍作者",
+    title: "物品编码",
     dataIndex: "code",
     key: "code",
     ellipsis: true,
     width: 150,
   },
   {
-    title: "借阅人",
+    title: "租借人",
     dataIndex: "borrowUser",
     key: "borrowUser",
     ellipsis: true,
     width: 150,
   },
   {
-    title: "借阅时间",
+    title: "租借时间",
     dataIndex: "borrowAt",
     key: "borrowAt",
     width: 200,
@@ -86,7 +86,7 @@ export default function Borrow() {
   const [form] = Form.useForm();
   const [list, setList] = useState<BorrowType[]>([]);
   const [categoryList, setCategoryList] = useState<CategoryType[]>([]);
-  const [bookList, setBookList] = useState<BookType[]>([]);
+  const [itemList, setItemList] = useState<ItemType[]>([]);
   const [total, setTotal] = useState(0);
   const [pagination, setPagination] = useState<TablePaginationConfig>({
     current: 1,
@@ -155,7 +155,7 @@ export default function Borrow() {
       }).then((res) => {
         const data = res.data.map((item: BorrowType) => ({
           ...item,
-          bookName: item.item.name,
+          itemName: item.item.name,
           code: item.item.code,
           borrowUser: item.user.nickName,
         }));
@@ -174,8 +174,8 @@ export default function Borrow() {
     getCategoryList({ all: true }).then((res) => {
       setCategoryList(res.data);
     });
-    getBookList({ all: true }).then((res) => {
-      setBookList(res.data);
+    getItemList({ all: true }).then((res) => {
+      setItemList(res.data);
     });
   }, []);
 
@@ -231,7 +231,7 @@ export default function Borrow() {
                 placeholder="请选择"
                 optionFilterProp="label"
                 allowClear
-                options={bookList.map((item) => ({
+                options={itemList.map((item) => ({
                   label: item.name,
                   value: item._id,
                 }))}

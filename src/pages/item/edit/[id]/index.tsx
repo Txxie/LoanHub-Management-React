@@ -1,4 +1,4 @@
-import { getBookDetail } from "@/api";
+import { getItemDetail } from "@/api";
 import { ItemForm } from "@/components";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -8,7 +8,7 @@ export default function Item() {
   const router = useRouter();
   useEffect(() => {
     (async () => {
-      const res = await getBookDetail(router.query.id as string);
+      const res = await getItemDetail(router.query.id as string);
       setData(res.data);
     })();
   }, [router]);

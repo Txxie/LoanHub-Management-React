@@ -1,6 +1,6 @@
 import { getCategoryList } from "@/api";
-import { bookAdd, bookUpdate } from "@/api/item";
-import { BookFormType, BookType, CategoryType } from "@/types";
+import { itemAdd, itemUpdate } from "@/api/item";
+import { ItemFormType, ItemType, CategoryType } from "@/types";
 import {
   Button,
   DatePicker,
@@ -22,7 +22,7 @@ import styles from "./index.module.css";
 const Option = Select.Option;
 const { TextArea } = Input;
 
-const ItemForm: React.FC<BookFormType> = ({ title, editData }) => {
+const ItemForm: React.FC<ItemFormType> = ({ title, editData }) => {
   const router = useRouter();
   const [form] = Form.useForm();
   const [categoryList, setCategoryList] = useState<CategoryType[]>([]);
@@ -51,7 +51,7 @@ const ItemForm: React.FC<BookFormType> = ({ title, editData }) => {
     }
   }, [editData, form]);
 
-  const handleFinish = async (values: BookType) => {
+  const handleFinish = async (values: ItemType) => {
     console.log(
       "%c [ values ]-53",
       "font-size:13px; background:pink; color:#bf2c9f;",
@@ -62,10 +62,10 @@ const ItemForm: React.FC<BookFormType> = ({ title, editData }) => {
       values.publishAt = dayjs(values.publishAt).valueOf();
     }
     if (editData?._id) {
-      await bookUpdate(editData._id, values);
+      await itemUpdate(editData._id, values);
       message.success("编辑成功");
     } else {
-      await bookAdd(values);
+      await itemAdd(values);
       message.success("创建成功");
     }
     router.push("/item");

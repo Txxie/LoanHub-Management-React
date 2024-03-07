@@ -1,7 +1,7 @@
-import { bookDelete, getBookList, getCategoryList } from "@/api";
+import { itemDelete, getItemList, getCategoryList } from "@/api";
 import { AuthHoc, Content, Layout } from "@/components";
 import { USER_ROLE } from "@/constants";
-import { ItemQueryType, BookType, CategoryType } from "@/types";
+import { ItemQueryType, ItemType, CategoryType } from "@/types";
 import { useCurrentUser } from "@/utils/hoos";
 import { ExclamationCircleFilled } from "@ant-design/icons";
 import {
@@ -108,7 +108,7 @@ const COLUMNS = [
 export default function Item() {
   const [form] = Form.useForm();
   const user = useCurrentUser();
-  const [list, setList] = useState<BookType[]>([]);
+  const [list, setList] = useState<ItemType[]>([]);
   const [categoryList, setCategoryList] = useState<CategoryType[]>([]);
   const [total, setTotal] = useState(0);
   const [pagination, setPagination] = useState<TablePaginationConfig>({
@@ -126,7 +126,7 @@ export default function Item() {
           title: "操作",
           dataIndex: "",
           key: "action",
-          render: (_: any, row: BookType) => (
+          render: (_: any, row: ItemType) => (
             <Space>
               <Button
                 type="link"
@@ -157,7 +157,7 @@ export default function Item() {
   const fetchData = useCallback(
     (search?: ItemQueryType) => {
       const { name, category, code } = search || {};
-      getBookList({
+      getItemList({
         current: pagination.current as number,
         pageSize: pagination.pageSize as number,
         name,
@@ -183,7 +183,7 @@ export default function Item() {
     })();
   }, []);
 
-  const handleBookAdd = () => {
+  const handleItemAdd = () => {
     router.push("/item/add");
   };
 
@@ -195,7 +195,7 @@ export default function Item() {
       cancelText: "取消",
       async onOk() {
         try {
-          await bookDelete(id);
+          await itemDelete(id);
           message.success("删除成功");
           fetchData(form.getFieldsValue());
         } catch (error) {
@@ -218,7 +218,7 @@ export default function Item() {
       title="物品列表"
       operation={
         <AuthHoc>
-          <Button type="primary" onClick={handleBookAdd}>
+          <Button type="primary" onClick={handleItemAdd}>
             添加
           </Button>
         </AuthHoc>

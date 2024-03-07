@@ -1,5 +1,5 @@
-import { borrowAdd, borrowUpdate, getBookList, getUserList } from "@/api";
-import { BookType, BorrowOptionType, BorrowType, UserType } from "@/types";
+import { borrowAdd, borrowUpdate, getItemList, getUserList } from "@/api";
+import { ItemType, BorrowOptionType, BorrowType, UserType } from "@/types";
 import { Button, Form, Select, message } from "antd";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -11,15 +11,15 @@ const BorrowForm: React.FC<any> = ({ title, editData }) => {
   const [form] = Form.useForm();
   const router = useRouter();
   const [userList, setUserList] = useState([]);
-  const [bookList, setBookList] = useState([]);
-  const [bookStock, setBookStock] = useState(0);
+  const [itemList, setItemList] = useState([]);
+  const [itemStock, setItemStock] = useState(0);
 
   useEffect(() => {
     getUserList().then((res) => {
       setUserList(res.data);
     });
-    getBookList({ all: true }).then((res) => {
-      setBookList(res.data);
+    getItemList({ all: true }).then((res) => {
+      setItemList(res.data);
     });
   }, []);
 
@@ -42,11 +42,11 @@ const BorrowForm: React.FC<any> = ({ title, editData }) => {
     }
   };
 
-  const handleBookChange = (
+  const handleItemChange = (
     value: string,
     option: BorrowOptionType | BorrowOptionType[]
   ) => {
-    setBookStock((option as BorrowOptionType).stock);
+    setItemStock((option as BorrowOptionType).stock);
   };
 
   return (
@@ -73,8 +73,8 @@ const BorrowForm: React.FC<any> = ({ title, editData }) => {
             placeholder="请选择"
             showSearch
             optionFilterProp="label"
-            onChange={handleBookChange}
-            options={bookList.map((item: BookType) => ({
+            onChange={handleItemChange}
+            options={itemList.map((item: ItemType) => ({
               label: item.name,
               value: item._id as string,
               stock: item.stock,
@@ -110,7 +110,7 @@ const BorrowForm: React.FC<any> = ({ title, editData }) => {
             },
           ]}
         >
-          {bookStock}
+          {itemStock}
         </Form.Item>
         <Form.Item label=" " colon={false}>
           <Button
@@ -119,7 +119,7 @@ const BorrowForm: React.FC<any> = ({ title, editData }) => {
             size="large"
             className={styles.btn}
             // 库存<=0并且不是编辑模式，不能点击
-            disabled={bookStock <= 0 && !editData?._id}
+            disabled={itemStock <= 0 && !editData?._id}
           >
             {editData?._id ? "编辑" : "创建"}
           </Button>

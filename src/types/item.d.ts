@@ -17,7 +17,7 @@ export interface ItemQueryType {
     code: string;
 }
 
-export interface BookFormType {
+export interface ItemFormType {
     title: string;
     editData?: ItemType;
 }
