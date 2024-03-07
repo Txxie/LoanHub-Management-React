@@ -22,6 +22,7 @@ import {
   TablePaginationConfig,
   Tag,
   message,
+  Input,
 } from "antd";
 import dayjs from "dayjs";
 import { useRouter } from "next/router";
@@ -255,13 +256,14 @@ export default function Borrow() {
           <AuthHoc>
             <Col span={5}>
               <Form.Item name="user" label="租借人">
-                <Select placeholder="请选择" allowClear>
+                <Input placeholder="请输入学号" allowClear />
+                {/* <Select placeholder="请选择" allowClear>
                   {categoryList.map((category) => (
                     <Option key={category._id} value={category._id}>
                       {category.name}
                     </Option>
                   ))}
-                </Select>
+                </Select> */}
               </Form.Item>
             </Col>
           </AuthHoc>
