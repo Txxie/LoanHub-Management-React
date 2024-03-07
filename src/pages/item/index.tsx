@@ -1,7 +1,7 @@
 import { bookDelete, getBookList, getCategoryList } from "@/api";
 import { AuthHoc, Content, Layout } from "@/components";
 import { USER_ROLE } from "@/constants";
-import { BookQueryType, BookType, CategoryType } from "@/types";
+import { ItemQueryType, BookType, CategoryType } from "@/types";
 import { useCurrentUser } from "@/utils/hoos";
 import { ExclamationCircleFilled } from "@ant-design/icons";
 import {
@@ -155,7 +155,7 @@ export default function Item() {
       : COLUMNS;
 
   const fetchData = useCallback(
-    (search?: BookQueryType) => {
+    (search?: ItemQueryType) => {
       const { name, category, code } = search || {};
       getBookList({
         current: pagination.current as number,
@@ -209,7 +209,7 @@ export default function Item() {
     setPagination(pagination);
   };
 
-  const handleSearchFinish = (values: BookQueryType) => {
+  const handleSearchFinish = (values: ItemQueryType) => {
     fetchData(values);
   };
 

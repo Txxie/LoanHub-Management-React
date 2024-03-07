@@ -11,7 +11,7 @@ export interface BookType {
   category: string; // 分类
 }
 
-export interface BookQueryType {
+export interface ItemQueryType {
   name: string;
   category: string;
   code: string;
