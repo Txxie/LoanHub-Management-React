@@ -109,12 +109,12 @@ const ItemForm: React.FC<ItemFormType> = ({ title, editData }) => {
             <Input placeholder="请输入" />
           </Form.Item>
           <Form.Item
-            label="作者"
+            label="编码"
             name="code"
             rules={[
               {
                 required: true,
-                message: "请输入作者",
+                message: "请输入编码",
               },
             ]}
           >

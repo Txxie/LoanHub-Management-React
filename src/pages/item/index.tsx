@@ -57,7 +57,7 @@ const COLUMNS = [
     ),
   },
   // {
-  //   title: "作者",
+  //   title: "编码",
   //   dataIndex: "author",
   //   key: "author",
   //   ellipsis: true,
@@ -237,7 +237,7 @@ export default function Item() {
             </Form.Item>
           </Col>
           <Col span={5}>
-            <Form.Item name="code" label="作者">
+            <Form.Item name="code" label="编码">
               <Input placeholder="请输入" />
             </Form.Item>
             {/* <Form.Item name="code" label="编号">
