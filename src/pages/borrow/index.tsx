@@ -216,7 +216,7 @@ export default function Borrow() {
   };
 
   return (
-    <Content title="物品借阅">
+    <Content title="物品租借">
       <Form
         form={form}
         name="search"
@@ -254,7 +254,7 @@ export default function Borrow() {
           </Col>
           <AuthHoc>
             <Col span={5}>
-              <Form.Item name="user" label="借阅人">
+              <Form.Item name="user" label="租借人">
                 <Select placeholder="请选择" allowClear>
                   {categoryList.map((category) => (
                     <Option key={category._id} value={category._id}>
