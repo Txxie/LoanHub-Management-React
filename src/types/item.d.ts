@@ -4,7 +4,7 @@ export interface ItemType {
     code: string;
     description: string;
     createdAt: string;
-    publishAt: number; // 出版日期
+    publishAt: number; // 入库日期
     bookNo: string; // 图书编号
     cover: string; // 封面
     stock: number; // 库存

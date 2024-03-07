@@ -159,7 +159,7 @@ const ItemForm: React.FC<ItemFormType> = ({ title, editData }) => {
             </Form.Item>
           )}
           <Form.Item
-            label="出版日期"
+            label="入库日期"
             name="publishAt"
             className={styles.publishAt}
           >
