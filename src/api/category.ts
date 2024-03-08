@@ -2,7 +2,7 @@ import { CategoryType } from "@/types";
 import request from "@/utils/request";
 import qs from "qs";
 
-export const getCategoryList = (params?: { level?: number; all?: boolean }) => {
+export const getCategoryList = (params?: { level?: string; all?: boolean }) => {
   return request.get(`/api/categories?${qs.stringify(params)}`);
 };
 

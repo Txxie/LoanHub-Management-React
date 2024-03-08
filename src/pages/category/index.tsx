@@ -26,13 +26,13 @@ import styles from "./index.module.css";
 const Option = Select.Option;
 
 const LEVEL = {
-  ONE: 1,
-  TWO: 2,
+  ONE: "一级",
+  TWO: "二级",
 };
 
 const LEVEL_OPTION = [
-  { label: "级别1", value: LEVEL.ONE },
-  { label: "级别2", value: LEVEL.TWO },
+  { label: "一级分类", value: LEVEL.ONE },
+  { label: "二级分类", value: LEVEL.TWO },
 ];
 
 const COLUMNS = [
@@ -44,13 +44,13 @@ const COLUMNS = [
     width: 300,
   },
   {
-    title: "级别",
+    title: "分类级别",
     dataIndex: "level",
     key: "level",
     ellipsis: true,
     width: 200,
-    render: (text: number) => (
-      <Tag color={text === 1 ? "green" : "cyan"}>{`级别${text}`}</Tag>
+    render: (text: string) => (
+      <Tag color={text === "一级" ? "green" : "cyan"}>{`${text}分类`}</Tag>
     ),
   },
   {
@@ -60,7 +60,8 @@ const COLUMNS = [
     ellipsis: true,
     width: 200,
     render: (text: { name: string }) => {
-      return text?.name ?? "-";
+      console.log("所属分类text", text);
+      return text?.name ?? "无";
     },
   },
   {
@@ -79,7 +80,7 @@ export default function Item() {
   const [isModalOpen, setModalOpen] = useState(false);
   const [list, setList] = useState<CategoryType[]>([]);
   const [total, setTotal] = useState(0);
-  const [formLevel, setFormLevel] = useState<number>();
+  const [formLevel, setFormLevel] = useState<string>();
   const [levelOneList, setLevelOneList] = useState<CategoryType[]>([]);
   const [pagination, setPagination] = useState<TablePaginationConfig>({
     current: 1,
@@ -143,12 +144,12 @@ export default function Item() {
     [pagination]
   );
 
-  // 获取所有level=1的分类
+  // 获取所有level=一级分类的分类
   const fetchLevelOneData = useCallback(() => {
     request
       .get(
         `/api/categories?${qs.stringify({
-          level: 1,
+          level: "一级",
           all: true,
         })}`
       )
@@ -249,7 +250,7 @@ export default function Item() {
     });
   };
 
-  const handleFormLevelChange = (value: number) => {
+  const handleFormLevelChange = (value: string) => {
     setFormLevel(value);
   };
 
@@ -277,7 +278,7 @@ export default function Item() {
               </Form.Item>
             </Col>
             <Col span={5}>
-              <Form.Item name="level" label="级别">
+              <Form.Item name="level" label="分类级别">
                 <Select
                   allowClear
                   placeholder="请选择"
@@ -347,7 +348,7 @@ export default function Item() {
                 <Input placeholder="请输入" />
               </Form.Item>
               <Form.Item
-                label="级别"
+                label="分类级别"
                 name="level"
                 rules={[
                   {
@@ -369,12 +370,12 @@ export default function Item() {
                   rules={[
                     {
                       required: true,
-                      message: "请选择图书分类",
+                      message: "请选择分类",
                     },
                   ]}
                 >
                   <Select placeholder="请选择">
-                    {levelOneList.map((item) => (
+                    {levelOneList?.map((item) => (
                       <Option key={item._id} value={item._id}>
                         {item.name}
                       </Option>
