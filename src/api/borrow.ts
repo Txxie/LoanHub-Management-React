@@ -19,7 +19,7 @@ export const borrowDelete = (id: string) => {
   return request.delete(`/api/borrows/${id}`);
 };
 export const borrowUpdate = (id: string, params: BorrowType) => {
-  return request.post(`/api/borrows/${id}`, params);
+  return request.put(`/api/borrows/${id}`, params);
 };
 
 export const borrowBack = (id: string) => {

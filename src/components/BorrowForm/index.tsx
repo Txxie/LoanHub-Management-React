@@ -13,6 +13,7 @@ const BorrowForm: React.FC<any> = ({ title, editData }) => {
   const [userList, setUserList] = useState([]);
   const [itemList, setItemList] = useState([]);
   const [itemStock, setItemStock] = useState(0);
+  const [isChange, setIsChange] = useState(false);
 
   useEffect(() => {
     getUserList().then((res) => {
@@ -46,6 +47,7 @@ const BorrowForm: React.FC<any> = ({ title, editData }) => {
     value: string,
     option: BorrowOptionType | BorrowOptionType[]
   ) => {
+    setIsChange(true);
     setItemStock((option as BorrowOptionType).stock);
   };
 
@@ -74,7 +76,7 @@ const BorrowForm: React.FC<any> = ({ title, editData }) => {
             showSearch
             optionFilterProp="label"
             onChange={handleItemChange}
-            options={itemList.map((item: ItemType) => ({
+            options={itemList?.map((item: ItemType) => ({
               label: item.name,
               value: item._id as string,
               stock: item.stock,
@@ -91,16 +93,17 @@ const BorrowForm: React.FC<any> = ({ title, editData }) => {
             },
           ]}
         >
-          <Input placeholder="请输入学号" allowClear />
-          {/* <Select
+          {/* <Input placeholder="请输入学号" allowClear /> */}
+          <Select
             placeholder="请选择"
             showSearch
             optionFilterProp="label"
-            options={userList.map((item: UserType) => ({
+            onChange={() => setIsChange(true)}
+            options={userList?.map((item: UserType) => ({
               label: item.name,
               value: item._id,
             }))}
-          /> */}
+          />
         </Form.Item>
         <Form.Item
           label="物品库存"
@@ -120,7 +123,7 @@ const BorrowForm: React.FC<any> = ({ title, editData }) => {
             size="large"
             className={styles.btn}
             // 库存<=0并且不是编辑模式，不能点击
-            disabled={itemStock <= 0 && !editData?._id}
+            disabled={(itemStock <= 0 && !editData?._id) || (isChange === false)}
           >
             {editData?._id ? "编辑" : "创建"}
           </Button>
