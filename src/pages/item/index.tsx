@@ -68,14 +68,14 @@ const COLUMNS = [
     dataIndex: "code",
     key: "code",
     ellipsis: true,
-    width: 150,
+    width: 80,
   },
   {
     title: "分类",
     dataIndex: "category",
     key: "category",
     ellipsis: true,
-    width: 80,
+    width: 150,
     render: (text: CategoryType) =>
       text ? <Tag color="blue">{text.name}</Tag> : "-",
   },
