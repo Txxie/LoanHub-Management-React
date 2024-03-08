@@ -170,15 +170,39 @@ export default function Item() {
 
   const handleEditCategoryFinish = async (values: CategoryType) => {
     // 编辑
-    if (editData._id) {
-      await categoryUpdate(editData._id, values);
-      message.success("编辑成功");
-    } else {
-      await categoryAdd(values);
-      message.success("创建成功");
+    // if (editData._id) {
+    //   await categoryUpdate(editData._id, values);
+    //   message.success("编辑成功");
+    // } else {
+    //   await categoryAdd(values);
+    //   message.success("创建成功");
+    // }
+    // fetchData();
+    // handleCancel();
+    try {
+      // 编辑
+      if (editData._id) {
+        await categoryUpdate(editData._id, values);
+        message.success("编辑成功");
+      } else {
+        // 检查分类是否已存在
+        const existingCategory = list.find(category => category.name === values.name);
+        if (existingCategory) {
+          // 如果分类已存在，则显示提示信息给用户
+          message.error("分类已存在，请输入其他分类名称");
+        } else {
+          // 分类不存在，可以添加
+          await categoryAdd(values);
+          message.success("创建成功");
+          fetchData();
+          handleCancel();
+        }
+      }
+    } catch (error) {
+      // 处理其他类型的错误
+      console.error(error);
+      message.error("发生错误，请重试");
     }
-    fetchData();
-    handleCancel();
   };
 
   const handleOk = async () => {
