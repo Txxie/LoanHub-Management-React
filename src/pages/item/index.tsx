@@ -256,7 +256,7 @@ export default function Item() {
                   { value: 'others', label: '其他' },
                 ]} /> */}
               <Select placeholder="请选择" allowClear>
-                {categoryList.map((category) => (
+                {categoryList?.map((category) => (
                   <Option key={category._id} value={category._id}>
                     {category.name}
                   </Option>
