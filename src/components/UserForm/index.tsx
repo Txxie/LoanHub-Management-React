@@ -96,7 +96,7 @@ const UserForm: React.FC<UserFormProps> = ({
             rules={[
               {
                 required: isEdit ? false : true,
-                message: "请输入编码",
+                message: "请输入编号",
               },
             ]}
           >

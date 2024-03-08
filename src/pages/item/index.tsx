@@ -236,7 +236,7 @@ export default function Item() {
             </Form.Item>
           </Col>
           <Col span={5}>
-            <Form.Item name="code" label="编码">
+            <Form.Item name="code" label="编号">
               <Input placeholder="请输入" />
             </Form.Item>
             {/* <Form.Item name="code" label="编号">

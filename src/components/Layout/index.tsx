@@ -89,6 +89,34 @@ const ITEMS = [
       },
     ],
   },
+  {
+    label: "数据统计",
+    key: "data",
+    icon: <UserOutlined />,
+    role: USER_ROLE.ADMIN,
+    children: [
+      {
+        label: "物品分类统计",
+        key: "/data",
+        role: USER_ROLE.ADMIN,
+      },
+      {
+        label: "物品借出情况统计",
+        key: "/data",
+        role: USER_ROLE.ADMIN,
+      },
+      {
+        label: "物品借出时长统计",
+        key: "/data",
+        role: USER_ROLE.ADMIN,
+      },
+      {
+        label: "物品状态统计",
+        key: "/data",
+        role: USER_ROLE.ADMIN,
+      },
+    ],
+  },
 ];
 
 const Layout: React.FC<
