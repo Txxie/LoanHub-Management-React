@@ -225,12 +225,12 @@ export default function Item() {
         <Row gutter={24}>
           <Col span={5}>
             <Form.Item name="name" label="物品名称">
-              <Input placeholder="请输入" />
+              <Input placeholder="请输入" allowClear />
             </Form.Item>
           </Col>
           <Col span={5}>
             <Form.Item name="code" label="编号">
-              <Input placeholder="请输入" />
+              <Input placeholder="请输入" allowClear />
             </Form.Item>
             {/* <Form.Item name="code" label="编号">
               <Input placeholder="请输入" />
