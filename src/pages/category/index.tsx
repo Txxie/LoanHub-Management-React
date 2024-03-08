@@ -184,6 +184,8 @@ export default function Item() {
       if (editData._id) {
         await categoryUpdate(editData._id, values);
         message.success("编辑成功");
+        fetchData();
+        handleCancel();
       } else {
         // 检查分类是否已存在
         const existingCategory = list.find(category => category.name === values.name);

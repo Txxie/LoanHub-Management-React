@@ -32,7 +32,7 @@ export default function Login() {
     <>
       <Head>
         <title>登陆</title>
-        <meta name="description" content="图书馆里系统" />
+        <meta name="itemLocation" content="图书馆里系统" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

@@ -2,7 +2,7 @@ export interface ItemType {
     _id?: string; // mongo数据库的id
     name: string;
     code: string;
-    description: string;
+    itemLocation: string;
     createdAt: string;
     publishAt: number; // 入库日期
     bookNo: string; // 图书编号

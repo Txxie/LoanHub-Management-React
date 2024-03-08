@@ -31,11 +31,11 @@ const Option = Select.Option;
 
 const COLUMNS = [
   {
-    title: "物品名称",
+    title: "名称",
     dataIndex: "name",
     key: "name",
     ellipsis: true,
-    width: 200,
+    width: 100,
   },
   {
     title: "图片",
@@ -56,13 +56,6 @@ const COLUMNS = [
       />
     ),
   },
-  // {
-  //   title: "作者",
-  //   dataIndex: "author",
-  //   key: "author",
-  //   ellipsis: true,
-  //   width: 150,
-  // },
   {
     title: "编号",
     dataIndex: "code",
@@ -80,9 +73,9 @@ const COLUMNS = [
       text ? <Tag color="blue">{text.name}</Tag> : "-",
   },
   {
-    title: "说明",
-    dataIndex: "description",
-    key: "description",
+    title: "位置",
+    dataIndex: "itemLocation",
+    key: "itemLocation",
     ellipsis: true,
     render: (text: string) => (
       <Tooltip placement="topLeft" title={text}>
