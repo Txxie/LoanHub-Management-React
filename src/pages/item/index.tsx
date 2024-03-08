@@ -133,7 +133,6 @@ export default function Item() {
                 block
                 onClick={() => {
                   router.push(`/item/edit/${row._id}`);
-                  // router.push(`/item/edit/${row._id}`);
                 }}
               >
                 编辑
@@ -246,15 +245,6 @@ export default function Item() {
           </Col>
           <Col span={5}>
             <Form.Item name="category" label="分类">
-              {/* <Select placeholder="请输入" allowClear
-                options={[
-                  { value: 'Electronics', label: '电子设备' },
-                  { value: 'Office Supplies', label: '办公用品' },
-                  { value: 'Clothing', label: '服装' },
-                  { value: 'Stationery', label: '文具' },
-                  { value: 'Household Goods', label: '生活用品' },
-                  { value: 'others', label: '其他' },
-                ]} /> */}
               <Select placeholder="请选择" allowClear>
                 {categoryList?.map((category) => (
                   <Option key={category._id} value={category._id}>
