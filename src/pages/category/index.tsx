@@ -216,6 +216,7 @@ export default function Item() {
   const handleCancel = () => {
     setEditData({});
     setModalOpen(false);
+    setFormLevel('');
   };
 
   const handleDeleteModal = (id: string) => {
