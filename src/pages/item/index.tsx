@@ -86,7 +86,7 @@ const COLUMNS = [
     ellipsis: true,
     render: (text: string) => (
       <Tooltip placement="topLeft" title={text}>
-        {text}
+        {text ?? '-'}
       </Tooltip>
     ),
   },
