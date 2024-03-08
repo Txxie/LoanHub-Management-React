@@ -83,7 +83,7 @@ export default function Item() {
   const [levelOneList, setLevelOneList] = useState<CategoryType[]>([]);
   const [pagination, setPagination] = useState<TablePaginationConfig>({
     current: 1,
-    pageSize: 6,
+    pageSize: 10,
     showSizeChanger: true,
   });
   const [editData, setEditData] = useState<Partial<CategoryType>>({});
