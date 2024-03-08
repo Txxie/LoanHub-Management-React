@@ -73,7 +73,9 @@ const COLUMNS = [
 ];
 
 export default function Item() {
-  const [form] = Form.useForm();
+  // const [form] = Form.useForm();
+  const [searchForm] = Form.useForm(); // 用于搜索表单
+  const [addEditForm] = Form.useForm(); // 用于添加/编辑表单
   const [isModalOpen, setModalOpen] = useState(false);
   const [list, setList] = useState<CategoryType[]>([]);
   const [total, setTotal] = useState(0);
@@ -159,6 +161,13 @@ export default function Item() {
     fetchData();
   }, [fetchData, fetchLevelOneData, pagination]);
 
+  // 在 Modal 打开时初始化添加/编辑表单字段值
+  useEffect(() => {
+    if (isModalOpen) {
+      addEditForm.setFieldsValue(editData || {});
+    }
+  }, [isModalOpen, editData, addEditForm]);
+
   const handleEditCategoryFinish = async (values: CategoryType) => {
     // 编辑
     if (editData._id) {
@@ -173,7 +182,8 @@ export default function Item() {
   };
 
   const handleOk = async () => {
-    form.submit();
+    // form.submit();
+    addEditForm.submit();
   };
 
   const handleCancel = () => {
@@ -190,7 +200,8 @@ export default function Item() {
       async onOk() {
         await categoryDelete(id);
         message.success("删除成功");
-        fetchData(form.getFieldsValue());
+        // fetchData(form.getFieldsValue());
+        fetchData(addEditForm.getFieldsValue());
       },
     });
   };
@@ -207,7 +218,8 @@ export default function Item() {
     fetchLevelOneData();
     setModalOpen(true);
     setTimeout(() => {
-      form.resetFields();
+      // form.resetFields();
+      addEditForm.resetFields(); // 重置添加/编辑表单字段值
     });
   };
 
@@ -226,14 +238,15 @@ export default function Item() {
         }
       >
         <Form
-          form={form}
+          // form={form}
+          form={searchForm}
           name="search"
           className={styles.form}
           onFinish={handleSearchFinish}
         >
           <Row gutter={24}>
             <Col span={5}>
-              <Form.Item name="name" label="物品名称">
+              <Form.Item name="name" label="分类名称">
                 <Input placeholder="请输入" allowClear />
               </Form.Item>
             </Col>
@@ -253,7 +266,8 @@ export default function Item() {
               <Button
                 style={{ margin: "0 8px" }}
                 onClick={() => {
-                  form.resetFields();
+                  // form.resetFields();
+                  searchForm.resetFields();
                 }}
               >
                 清空
@@ -285,7 +299,8 @@ export default function Item() {
           >
             <Form
               name="category"
-              form={form}
+              // form={form}
+              form={addEditForm}
               labelCol={{ span: 4 }}
               wrapperCol={{ span: 20 }}
               style={{ maxWidth: 600 }}
