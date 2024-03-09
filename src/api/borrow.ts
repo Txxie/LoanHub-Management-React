@@ -26,6 +26,7 @@ export const borrowBack = (id: string) => {
   return request.put(`/api/borrows/back/${id}`);
 };
 
-export const borrowCount = () => {
+//获取借用表的所有数据
+export const borrowData = () => {
   return request.get("/api/borrows");
 }

@@ -28,3 +28,11 @@ export interface BorrowType {
 export interface BorrowFormType {
   title: string;
 }
+
+export interface LendingChartType {
+  itemLendingData: Array;
+}
+
+export interface DurationChartType {
+  itemDurationData: Array;
+}

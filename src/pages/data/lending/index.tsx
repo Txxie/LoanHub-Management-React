@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Content from "@/components/Content";
 import ItemLendingChart from "../components/ItemLendingChart";
-import { borrowCount } from "@/api";
+import { borrowData } from "@/api";
 
 // 定义接口来表示项目数据的类型
 interface LendingDataType {
@@ -61,8 +61,8 @@ const LendingItem: React.FC<any> = () => {
     useEffect(() => {
         async function fetchData() {
             try {
-                // 调用 borrowCount 函数获取借出的所有物品及对应记录数
-                const resData = await borrowCount();
+                // 调用 borrowData 函数获取借出的所有记录数
+                const resData = await borrowData();
                 console.log("resData", resData);
                 const newData = resData?.data?.map((item: { item: { name: any; }; }) => (item.item.name));
                 console.log("newData", newData);
