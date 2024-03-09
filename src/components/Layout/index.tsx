@@ -7,6 +7,7 @@ import {
   SnippetsOutlined,
   SolutionOutlined,
   UserOutlined,
+  BarChartOutlined,
 } from "@ant-design/icons";
 import {
   Layout as AntdLayout,
@@ -92,29 +93,30 @@ const ITEMS = [
   {
     label: "数据统计",
     key: "data",
-    icon: <UserOutlined />,
+    icon: <BarChartOutlined />,
     role: USER_ROLE.ADMIN,
     children: [
       {
         label: "物品分类统计",
+        // key: "/data/itemCategory",
         key: "/data",
         role: USER_ROLE.ADMIN,
       },
       {
         label: "物品借出情况统计",
-        key: "/data",
+        key: "/data/lending",
         role: USER_ROLE.ADMIN,
       },
       {
-        label: "物品借出时长统计",
-        key: "/data",
+        label: "物品借用时长统计",
+        key: "/data/duration",
         role: USER_ROLE.ADMIN,
       },
-      {
-        label: "物品状态统计",
-        key: "/data",
-        role: USER_ROLE.ADMIN,
-      },
+      // {
+      //   label: "用户借用情况统计",
+      //   key: "/data/user",
+      //   role: USER_ROLE.ADMIN,
+      // },
     ],
   },
 ];
