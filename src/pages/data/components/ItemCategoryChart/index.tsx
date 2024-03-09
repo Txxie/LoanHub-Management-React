@@ -127,7 +127,7 @@ const ItemCategoryChart: React.FC<CategoryChartType> = ({ itemCategoryData }) =>
 
     return (
         <div>
-            <Button onClick={toggleChartType}>切换图表类型</Button>
+            <Button onClick={toggleChartType}>切换为{chartType === 'bar' ? '玫瑰饼图' : '柱状图'}</Button>
             <div id="itemCategoryChart" style={{ width: '85%', height: '450px' }}></div>
         </div>
     );
