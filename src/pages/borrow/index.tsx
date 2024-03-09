@@ -154,7 +154,7 @@ export default function Borrow() {
         user,
         status,
       }).then((res) => {
-        const data = res.data.map((item: BorrowType) => ({
+        const data = res?.data?.map((item: BorrowType) => ({
           ...item,
           itemName: item.item.name,
           code: item.item.code,
