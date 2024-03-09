@@ -28,7 +28,7 @@ const fakeItemCategoryData = [
 ]
 
 
-export default function ItemData() {
+export default function CategoryData() {
 
     const [itemCategoryData, setItemCategoryData] = useState([]);
 
