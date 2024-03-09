@@ -25,3 +25,7 @@ export const borrowUpdate = (id: string, params: BorrowType) => {
 export const borrowBack = (id: string) => {
   return request.put(`/api/borrows/back/${id}`);
 };
+
+export const borrowCount = () => {
+  return request.get("/api/borrows");
+}

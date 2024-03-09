@@ -26,4 +26,6 @@ export interface CategoryChartType {
     itemCategoryData: Array;
 }
 
-
+export interface LendingChartType {
+    itemLendingData: Array;
+}
