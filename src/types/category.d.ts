@@ -11,3 +11,7 @@ export interface CategoryQueryType {
   name?: string;
   level?: string;
 }
+
+export interface CategoryChartType {
+  itemCategoryData: Array;
+}
