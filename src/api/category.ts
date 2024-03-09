@@ -17,3 +17,7 @@ export const categoryUpdate = (id: string, params: CategoryType) => {
 export const categoryDelete = (id: string) => {
   return request.delete(`/api/categories/${id}`);
 };
+
+export const categoryQuantity = () => {
+  return request.get("/api/categories");
+}

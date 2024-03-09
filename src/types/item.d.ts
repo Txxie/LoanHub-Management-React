@@ -21,3 +21,9 @@ export interface ItemFormType {
     title: string;
     editData?: ItemType;
 }
+
+export interface CategoryChartType {
+    itemCategoryData: Array;
+}
+
+
