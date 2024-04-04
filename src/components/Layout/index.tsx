@@ -44,7 +44,7 @@ const ITEMS = [
         label: "物品添加",
         key: "/item/add",
         // key: "/item/add",
-        // role: USER_ROLE.ADMIN,
+        role: USER_ROLE.ADMIN,
       },
     ],
   },
@@ -70,23 +70,23 @@ const ITEMS = [
     label: "分类管理",
     key: "/category",
     icon: <ProfileOutlined />,
-    // role: USER_ROLE.ADMIN,
+    role: USER_ROLE.ADMIN,
   },
   {
     label: "用户管理",
     key: "user",
     icon: <UserOutlined />,
-    // role: USER_ROLE.ADMIN,
+    role: USER_ROLE.ADMIN,
     children: [
       {
         label: "用户列表",
         key: "/user",
-        // role: USER_ROLE.ADMIN,
+        role: USER_ROLE.ADMIN,
       },
       {
         label: "用户添加",
         key: "/user/add",
-        // role: USER_ROLE.ADMIN,
+        role: USER_ROLE.ADMIN,
       },
     ],
   },
@@ -94,23 +94,23 @@ const ITEMS = [
     label: "数据统计",
     key: "data",
     icon: <BarChartOutlined />,
-    // role: USER_ROLE.ADMIN,
+    role: USER_ROLE.ADMIN,
     children: [
       {
         label: "物品分类统计",
         // key: "/data/itemCategory",
         key: "/data",
-        // role: USER_ROLE.ADMIN,
+        role: USER_ROLE.ADMIN,
       },
       {
         label: "物品借出情况统计",
         key: "/data/lending",
-        // role: USER_ROLE.ADMIN,
+        role: USER_ROLE.ADMIN,
       },
       {
         label: "物品借用时长统计",
         key: "/data/duration",
-        // role: USER_ROLE.ADMIN,
+        role: USER_ROLE.ADMIN,
       },
       // {
       //   label: "用户借用情况统计",
@@ -170,6 +170,7 @@ const Layout: React.FC<
       return ITEMS;
     }
   }, [user]);
+  console.log("items", items);
 
   return (
     <>
