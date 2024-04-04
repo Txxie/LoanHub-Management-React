@@ -19,10 +19,15 @@ export default function Login() {
         "font-size:13px; background:pink; color:#bf2c9f;",
         res
       );
-      localStorage.setItem("user", JSON.stringify(res.data));
-      message.success("登陆成功");
+      if (res.data.status === 'on') {
+        localStorage.setItem("user", JSON.stringify(res.data));
+        message.success("登陆成功");
 
-      router.push("/item");
+        router.push("/item");
+      } else {
+        message.error("账号被禁用");
+      }
+
     } catch (error) {
       console.error(error);
     }
