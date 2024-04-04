@@ -84,7 +84,7 @@ const BorrowForm: React.FC<any> = ({ title, editData }) => {
           />
         </Form.Item>
         <Form.Item
-          label="租借用户"
+          label="借用用户"
           name="user"
           rules={[
             {

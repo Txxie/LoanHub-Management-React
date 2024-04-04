@@ -49,18 +49,18 @@ const ITEMS = [
     ],
   },
   {
-    label: "租借管理",
+    label: "借用管理",
     key: "borrow",
     role: USER_ROLE.USER,
     icon: <SolutionOutlined />,
     children: [
       {
-        label: "租借列表",
+        label: "借用列表",
         key: "/borrow",
         role: USER_ROLE.USER,
       },
       {
-        label: "物品租借",
+        label: "物品借用",
         key: "/borrow/add",
         role: USER_ROLE.ADMIN,
       },
@@ -189,7 +189,7 @@ const Layout: React.FC<
               alt="logo"
               className={styles.logo}
             />
-            校园物品租借管理系统
+            校园物品借用管理系统
             <span className={styles.user}>
               <Dropdown menu={{ items: USER_ITEMS }} placement="bottom">
                 <span onClick={(e) => e.preventDefault()}>

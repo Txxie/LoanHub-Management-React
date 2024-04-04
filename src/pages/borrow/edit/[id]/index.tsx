@@ -13,7 +13,7 @@ const BorrowItem: React.FC<any> = () => {
     });
   }, [router.query.id]);
 
-  return <BorrowForm title="租借编辑" editData={data} />;
+  return <BorrowForm title="借用编辑" editData={data} />;
 };
 
 export default BorrowItem;

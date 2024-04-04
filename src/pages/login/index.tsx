@@ -45,7 +45,7 @@ export default function Login() {
             src="/logo.svg"
             alt="logo"
           />
-          校园物品租借管理系统
+          校园物品借用管理系统
         </header>
         <div className={styles.form}>
           <Form

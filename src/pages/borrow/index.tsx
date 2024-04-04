@@ -61,14 +61,14 @@ const COLUMNS = [
     width: 150,
   },
   {
-    title: "租借人",
+    title: "借用人",
     dataIndex: "borrowUser",
     key: "borrowUser",
     ellipsis: true,
     width: 150,
   },
   {
-    title: "租借时间",
+    title: "借用时间",
     dataIndex: "borrowAt",
     key: "borrowAt",
     width: 200,
@@ -217,7 +217,7 @@ export default function Borrow() {
   };
 
   return (
-    <Content title="物品租借">
+    <Content title="物品借用">
       <Form
         form={form}
         name="search"
@@ -255,7 +255,7 @@ export default function Borrow() {
           </Col>
           <AuthHoc>
             <Col span={5}>
-              <Form.Item name="user" label="租借人">
+              <Form.Item name="user" label="借用人">
                 <Input placeholder="请输入学号" allowClear />
                 {/* <Select placeholder="请选择" allowClear>
                   {categoryList.map((category) => (
