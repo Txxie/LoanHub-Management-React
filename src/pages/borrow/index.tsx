@@ -117,6 +117,7 @@ export default function Borrow() {
       title: "操作",
       dataIndex: "",
       key: "action",
+      width: "150px",
       render: (_: any, row: BorrowType) => (
         <Space>
           {row.status === BORROW_STATUS.ON ? (
