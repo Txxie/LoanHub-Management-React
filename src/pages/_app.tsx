@@ -26,7 +26,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       {load ? (
         <ConfigProvider locale={locale}>
-          {router.pathname === "/login" ? (
+          {(router.pathname === "/login" || router.pathname === "/register") ? (
             <Component {...pageProps} />
           ) : (
             <Layout>

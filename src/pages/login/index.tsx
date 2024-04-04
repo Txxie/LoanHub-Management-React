@@ -81,6 +81,13 @@ export default function Login() {
                 登陆
               </Button>
             </Form.Item>
+            {/* 注册链接 */}
+            <div className={styles.registerLink}>
+              还没有账户？{" "}
+              <a className={styles.registerLinkText} href="/register">
+                注册
+              </a>
+            </div>
           </Form>
         </div>
       </main>

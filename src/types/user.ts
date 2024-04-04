@@ -16,6 +16,11 @@ export interface UserLoginType {
   password: string;
 }
 
+export interface UserRegisterType {
+  name: string;
+  password: string;
+}
+
 export interface UserQueryType {
   current?: number;
   pageSize?: number;

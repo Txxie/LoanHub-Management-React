@@ -59,7 +59,10 @@ export const CreateAxiosInstance = (
         return data;
       } else if (status === 401) {
         return Router.push("/login");
-      } else {
+      } else if (status === 201) {
+        return data;
+      }
+      else {
         AntdMessage.error(message);
         return Promise.reject(response.data);
       }
