@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 
 import Content from "../Content";
 import styles from "./index.module.css";
+import { BORROW_STATUS } from "@/constants";
+
 
 const BorrowForm: React.FC<any> = ({ title, editData }) => {
   const [form] = Form.useForm();
@@ -14,6 +16,8 @@ const BorrowForm: React.FC<any> = ({ title, editData }) => {
   const [itemList, setItemList] = useState([]);
   const [itemStock, setItemStock] = useState(0);
   const [isChange, setIsChange] = useState(false);
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
+
 
   useEffect(() => {
     getUserList().then((res) => {
@@ -29,13 +33,18 @@ const BorrowForm: React.FC<any> = ({ title, editData }) => {
   }, [editData, form]);
 
   const handleFinish = async (values: BorrowType) => {
+    // const obj = JSON.parse(localStorage.getItem("user") || {});
+    // console.log("obj", obj);
+    const adminStatus = BORROW_STATUS.ON;
+    const adminValues = { ...values, status: adminStatus }
+    const userValues = { ...values, user: user }
     try {
       if (editData?._id) {
-        await borrowUpdate(editData._id, values);
+        await borrowUpdate(editData._id, user.role === 'admin' ? adminValues : userValues);
         message.success("编辑成功");
       } else {
-        await borrowAdd(values);
-        message.success("创建成功");
+        await borrowAdd(user.role === 'admin' ? adminValues : userValues);
+        message.success(user.role === 'admin' ? "添加成功" : "借用申请创建成功");
       }
       router.push("/borrow");
     } catch (error) {
@@ -83,28 +92,29 @@ const BorrowForm: React.FC<any> = ({ title, editData }) => {
             }))}
           />
         </Form.Item>
-        <Form.Item
-          label="借用用户"
-          name="user"
-          rules={[
-            {
-              required: true,
-              message: "请输入名称或学号",
-            },
-          ]}
-        >
-          {/* <Input placeholder="请输入学号" allowClear /> */}
-          <Select
-            placeholder="请选择"
-            showSearch
-            optionFilterProp="label"
-            onChange={() => setIsChange(true)}
-            options={userList?.map((item: UserType) => ({
-              label: item.name,
-              value: item._id,
-            }))}
-          />
-        </Form.Item>
+        {user?.role === 'admin' ? (
+          <Form.Item
+            label="借用用户"
+            name="user"
+            rules={[
+              {
+                required: true,
+                message: "请输入名称或学号",
+              },
+            ]}
+          >
+            <Select
+              placeholder="请选择"
+              showSearch
+              optionFilterProp="label"
+              onChange={() => setIsChange(true)}
+              options={userList?.map((item: UserType) => ({
+                label: item.name,
+                value: item._id,
+              }))}
+            />
+          </Form.Item>
+        ) : null}
         <Form.Item
           label="物品库存"
           rules={[
@@ -125,7 +135,7 @@ const BorrowForm: React.FC<any> = ({ title, editData }) => {
             // 库存<=0并且不是编辑模式，不能点击
             disabled={(itemStock <= 0 && !editData?._id) || (isChange === false)}
           >
-            {editData?._id ? "编辑" : "创建"}
+            {user.role === 'admin' ? "添加" : "申请借用"}
           </Button>
         </Form.Item>
       </Form>
