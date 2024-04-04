@@ -12,5 +12,5 @@ export default function Item() {
       setData(res.data);
     })();
   }, [router]);
-  return <ItemForm title="图书编辑" editData={data} />;
+  return <ItemForm title="物品编辑" editData={data} />;
 }
