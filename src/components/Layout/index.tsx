@@ -62,7 +62,7 @@ const ITEMS = [
       {
         label: "物品借用",
         key: "/borrow/add",
-        role: USER_ROLE.ADMIN,
+        role: USER_ROLE.USER,
       },
     ],
   },
