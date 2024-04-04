@@ -20,12 +20,35 @@
 }
 
 .form {
-  height: 300px;
+  height: 350px;
   width: 500px;
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.05);
+
+  .registerLink {
+    display: flex;
+    justify-content: center;
+    /* 水平居中 */
+    align-items: center;
+    /* 垂直居中 */
+    height: 100%;
+    /* 设置高度以便垂直居中 */
+
+    .registerLinkText {
+      text-align: center;
+      /* 文本水平居中 */
+      line-height: 40px;
+      /* 设置行高以便垂直居中 */
+      color: blue;
+      text-decoration: underline;
+    }
+
+    .registerLinkText:hover {
+      color: darkblue;
+    }
+  }
 }
 
 .label {
