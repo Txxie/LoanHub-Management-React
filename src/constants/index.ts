@@ -16,4 +16,6 @@ export enum USER_SEX {
 export enum BORROW_STATUS {
   ON = "on",
   OFF = "off",
+  PENDING = "pending",
+  REJECTED = "rejected",
 }
