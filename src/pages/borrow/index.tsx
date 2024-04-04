@@ -186,12 +186,14 @@ export default function Borrow() {
         user,
         status,
       }).then((res) => {
-        const data = res?.data?.map((item: BorrowType) => ({
-          ...item,
-          itemName: item.item.name,
-          code: item.item.code,
-          borrowUser: item.user.nickName,
-        }));
+        const data = res?.data?.map((item: BorrowType) => {
+          return ({
+            ...item,
+            itemName: item?.item?.name || '物品已删除',
+            code: item.item.code,
+            borrowUser: item?.user?.nickName || '用户已注销',
+          })
+        });
         setList(data);
         setTotal(res.total);
         setModalVisible(false);
