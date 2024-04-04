@@ -23,6 +23,7 @@ export interface BorrowType {
   item: ItemType;
   user: UserType;
   status: BORROW_STATUS;
+  reason?: string;
 }
 
 export interface BorrowFormType {

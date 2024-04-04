@@ -1,13 +1,14 @@
 import {
   borrowBack,
+  borrowUpdate,
   borrowDelete,
   getItemList,
   getBorrowList,
   getCategoryList,
 } from "@/api";
-import { AuthHoc, Content, Layout } from "@/components";
+import { AuthHoc, Content, Layout, AuditModal } from "@/components";
 import { BORROW_STATUS } from "@/constants";
-import { ItemType, BorrowQueryType, BorrowType, CategoryType } from "@/types";
+import { ItemType, BorrowQueryType, BorrowType, CategoryType, UserType } from "@/types";
 import { useCurrentUser } from "@/utils/hoos";
 import { ExclamationCircleFilled } from "@ant-design/icons";
 import {
@@ -46,12 +47,24 @@ const COLUMNS = [
     key: "status",
     ellipsis: true,
     width: 100,
-    render: (text: string) =>
-      text === "on" ? (
-        <Tag color="red">借出</Tag>
-      ) : (
-        <Tag color="green">已还</Tag>
-      ),
+    render: (text: string) => {
+      if (text === 'on') {
+        return <Tag color="orange">借出</Tag>;
+      } else if (text === 'off') {
+        return <Tag color="green">已还</Tag>;
+      } else if (text === 'pending') {
+        return <Tag color="blue">待审批</Tag>;
+      } else {
+        return <Tag color="red">被拒绝</Tag>;
+      }
+    }
+  },
+  {
+    title: "拒绝原因",
+    dataIndex: "reason",
+    key: "reason",
+    ellipsis: true,
+    width: 100,
   },
   {
     title: "物品编码",
@@ -94,6 +107,8 @@ export default function Borrow() {
     pageSize: 10,
     showSizeChanger: true,
   });
+  const [modalVisible, setModalVisible] = useState(false);
+  const [record, setRecord] = useState<BorrowType>();
   const router = useRouter();
 
   const columns = [
@@ -114,18 +129,34 @@ export default function Borrow() {
             >
               归还
             </Button>
-          ) : null}
-          <AuthHoc>
-            <Button
-              type="link"
-              block
-              onClick={() => {
-                router.push(`/borrow/edit/${row._id}`);
-              }}
-            >
-              编辑
-            </Button>
-          </AuthHoc>
+          ) : row.status === BORROW_STATUS.OFF ? (
+            null
+          ) : (
+            row.status === BORROW_STATUS.PENDING && JSON.parse(localStorage.getItem("user") || '{}').role !== 'admin' ? (
+              <Button
+                type="link"
+                block
+                onClick={() => {
+                  handleDeleteModal(row._id as string);
+                }}
+              >
+                撤销申请
+              </Button>
+            ) : (
+              <AuthHoc>
+                <Button
+                  type="link"
+                  block
+                  danger
+                  onClick={() => {
+                    handleAudit(row);
+                  }}
+                >
+                  审批
+                </Button>
+              </AuthHoc>
+            )
+          )}
           <AuthHoc>
             <Button
               type="link"
@@ -162,6 +193,7 @@ export default function Borrow() {
         }));
         setList(data);
         setTotal(res.total);
+        setModalVisible(false);
       });
     },
     [pagination]
@@ -193,6 +225,11 @@ export default function Borrow() {
       },
     });
   };
+
+  const handleAudit = (row: BorrowType) => {
+    setModalVisible(true);
+    setRecord(row);
+  }
 
   const handleDeleteModal = (id: string) => {
     Modal.confirm({
@@ -249,6 +286,8 @@ export default function Borrow() {
                 options={[
                   { label: "借出", value: BORROW_STATUS.ON },
                   { label: "归还", value: BORROW_STATUS.OFF },
+                  { label: "待审批", value: BORROW_STATUS.PENDING },
+                  { label: "被拒绝", value: BORROW_STATUS.REJECTED },
                 ]}
               />
             </Form.Item>
@@ -296,6 +335,7 @@ export default function Borrow() {
           }}
         />
       </div>
+      {modalVisible ? <AuditModal modalVisible={modalVisible} record={record} fetchData={fetchData} form={form} /> : null}
     </Content>
   );
 }
