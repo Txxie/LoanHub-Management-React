@@ -16,11 +16,11 @@ export const useCurrentUser = () => {
     if (obj) {
       try {
         const parsedObj = JSON.parse(obj);
-        console.log(
-          "%c [ obj ]-9",
-          "font-size:13px; background:pink; color:#bf2c9f;",
-          parsedObj
-        );
+        // console.log(
+        //   "%c [ obj ]-9",
+        //   "font-size:13px; background:pink; color:#bf2c9f;",
+        //   parsedObj
+        // );
         setUser(parsedObj);
       } catch (error) {
         console.error("Error parsing JSON:", error);
