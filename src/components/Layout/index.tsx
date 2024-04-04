@@ -76,7 +76,7 @@ const ITEMS = [
     label: "用户管理",
     key: "user",
     icon: <UserOutlined />,
-    role: USER_ROLE.ADMIN,
+    // role: USER_ROLE.ADMIN,
     children: [
       {
         label: "用户列表",
@@ -94,7 +94,7 @@ const ITEMS = [
     label: "数据统计",
     key: "data",
     icon: <BarChartOutlined />,
-    role: USER_ROLE.ADMIN,
+    // role: USER_ROLE.ADMIN,
     children: [
       {
         label: "物品分类统计",
