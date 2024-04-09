@@ -143,6 +143,7 @@ const Layout: React.FC<
       key: "2",
       label: (
         <span
+          style={{ width: '100%', display: 'inline-block' }}
           onClick={async () => {
             await setLogout();
             localStorage.removeItem("user");
