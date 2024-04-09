@@ -159,19 +159,29 @@ const Layout: React.FC<
 
   const items = useMemo(() => {
     if (user?.role === USER_ROLE.USER) {
-      return ITEMS.filter((item) => {
+      const userITEMS = (ITEMS.filter((item) => {
+        return item.role === USER_ROLE.USER;
+      })).filter((item) => {
         if (item.children) {
           item.children = item.children.filter(
             (k) => k.role === USER_ROLE.USER
           );
         }
-        return item.role === USER_ROLE.USER;
+        return true;
       });
+      return userITEMS;
+      // return ITEMS.filter((item) => {
+      //   if (item.children) {
+      //     item.children = item.children.filter(
+      //       (k) => k.role === USER_ROLE.USER
+      //     );
+      //   }
+      //   return item.role === USER_ROLE.USER;
+      // });
     } else {
       return ITEMS;
     }
   }, [user]);
-  console.log("items", items);
 
   return (
     <>
